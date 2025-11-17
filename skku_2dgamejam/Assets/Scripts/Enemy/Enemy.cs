@@ -16,19 +16,27 @@ public class Enemy : MonoBehaviour
 
     [Header("스탯")]
     public float Speed = 1.0f;
-    public float _health = 100f;
+    public float _health = 30f;
 
     [Header("적 타입")]
     public EEnemyType Type;
 
     [Header("아이템 프리팹")]
-    public GameObject ItemPrefabs;
+    public GameObject[] ItemPrefabs;
+
+    private Animator _animator;
+    private Enemy _enemy;
+
+    [Header("폭발 프리팹")]
+    public GameObject ExplosionPrefab;
 
     private void Start()
     {
+        _enemy = GetComponent<Enemy>();
+        _animator = GetComponent<Animator>();
+
         _currentPosition = transform.position.x;
     }
-
 
 
     public void Update()
@@ -70,6 +78,7 @@ public class Enemy : MonoBehaviour
 
     private void MoveFly()
     {
+
         _currentPosition += Time.deltaTime * direction;
         if(_currentPosition >= TopMax)
         {
@@ -90,7 +99,10 @@ public class Enemy : MonoBehaviour
     public void Hit(float damage)
     {
         _health -= damage;
-        if(_health <= 0 )
+
+        _animator.SetTrigger("Hit");
+
+        if (_health <= 0 )
         {
             Death();
         }
@@ -98,20 +110,20 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
-       /* DropItem();*/
+       DropItem();
     }
 
-/*    private void DropItem()
+     private void DropItem()
     {
         if(Random.Range(0,2) == 0)
         {
-            Item.Instance.AttackPower;
+           
         }
 
         else
         {
-            Item.Instance.AttackSpeed;
+            
         }
-    }*/
+    }
 
 }

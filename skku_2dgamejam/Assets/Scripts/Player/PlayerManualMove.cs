@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -17,9 +18,12 @@ public class PlayerManualMove : MonoBehaviour
 
     private Player _player;
 
+    private Animator _animator;
+
     [SerializeField]
     private float _bounce = 5f; //점프 높이
     private Rigidbody2D _rigid2D;
+    private bool isdash;
 
     [SerializeField]
     private LayerMask groundLayer; // 바닥 체크를 위한 충돌 레이어
@@ -39,6 +43,7 @@ public class PlayerManualMove : MonoBehaviour
     {
         _rigid2D = GetComponent<Rigidbody2D>();
         capuleCollider2D = GetComponent<CapsuleCollider2D>();
+       
     }
 
     public void Jump()
@@ -59,16 +64,18 @@ public class PlayerManualMove : MonoBehaviour
         float finalSpeed = _player.Speed;
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            isdash = true;
+            _animator.SetBool("Run", true);
             finalSpeed = finalSpeed * ShiftSpeed;
         }
-        
-        if(Input.GetKey(KeyCode.D))
+
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * Speed * Time.deltaTime);
+            transform.Translate(Vector3.right * finalSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left * Speed * Time.deltaTime);
+            transform.Translate(Vector3.left * finalSpeed * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

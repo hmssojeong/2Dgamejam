@@ -13,6 +13,12 @@ public class Item : MonoBehaviour
     public EItemType Type;
     public float Value;
 
+    public Player player;
+
+    private void Start()
+    {
+        player = GetComponent<Player>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") == false) return;
@@ -28,14 +34,25 @@ public class Item : MonoBehaviour
         {
             case EItemType.AttackPower:
                 {
-                    PlayerManualMove playerManualMove = other.GetComponent<PlayerManualMove>();
+                    AttackPower();
                     break;
                 }
             case EItemType.AttackSpeedUp:
                 {
-                    PlayerManualMove playerManualMove = other.GetComponent<PlayerManualMove>();
+                    AttackSpeedUp();
                     break;
                 }
         }
     }
-}
+
+    private void AttackPower()
+    {
+        float AttackPower = player.Damage + 10f;
+    }
+
+    private void AttackSpeedUp()
+    {
+        float AttackSpeed = player.AttackSpeed + 2f;
+    }
+
+    }

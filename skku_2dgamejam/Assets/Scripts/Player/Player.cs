@@ -7,38 +7,52 @@ public class Player : MonoBehaviour
 
     public GameObject AttackPrefab; 
     public float AttackRange = 1f;
-    public int damage = 10;
+    public float AttackSpeed = 1f;
+    public float Damage = 10;
 
-    public LayerMask enemyLayer;   // 적 레이어
+    private Animator _animator;
 
+    private float curTime;
+    public float coolTime = 0.5f;
+
+    public Transform pos;
+    public Vector2 boxSize;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();   
+    }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && curTime <= 0)
         {
-            Attack();
+            if (Input.GetMouseButtonDown(0))
+            {
+                Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
+
+                foreach (Collider2D collider in collider2Ds)
+                {
+                    if(collider.tag == "Enemy")
+                    {
+                        collider.GetComponent<Enemy>().Hit(10);
+                    }
+                }
+              
+            }
+            _animator.SetTrigger("Attack1");
+            curTime = coolTime;
+        }
+        else
+        {
+            curTime -= Time.deltaTime;
         }
     }
 
-        private void Attack()
-        {
-            // 1) 공격 이미지 생성
-            GameObject slash = Instantiate(AttackPrefab, transform.position, Quaternion.identity);
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(pos.position, boxSize);
+    }
 
-            // 0.2초 후 자동 삭제
-            Destroy(slash, 0.2f);
-
-            // 2) 공격 범위 안에 있는 적 찾기
-            Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, AttackRange, enemyLayer);
-
-            foreach (Collider2D enemy in enemies)
-            {
-                Enemy minienemy = enemy.GetComponent<Enemy>();
-                if (minienemy != null)
-                {
-                    minienemy.Hit(damage);
-                }
-            }
-        }
-
- }
+}
 
