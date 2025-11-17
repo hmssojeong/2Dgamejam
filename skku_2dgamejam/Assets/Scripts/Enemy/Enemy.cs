@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
 
 public enum EEnemyType
@@ -21,6 +22,9 @@ public class Enemy : MonoBehaviour
 
     [Header("적 타입")]
     public EEnemyType Type;
+
+    [Header("점수")]
+    public int Score = 100;
 
     [Header("아이템 프리팹")]
     public GameObject[] ItemPrefabs;
@@ -137,8 +141,9 @@ public class Enemy : MonoBehaviour
         DropItem();
         MakeExplosionEffect();
         _animator.SetTrigger("Die");
+        ScoreManager.Instance.AddScore(Score);
         Destroy(gameObject, 0.7f);
-        ScoreManager.Instance.AddScore(100);
+        
 
     }
 

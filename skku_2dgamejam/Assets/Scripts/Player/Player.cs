@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+   
     private PlayerManualMove _playerManualMove;
     public float Speed = 3f;
     private float _health = 200;

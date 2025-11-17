@@ -109,6 +109,7 @@ MonoBehaviour:
   _health: 100
   Damage: 5
   Type: 2
+  Score: 150
   ItemPrefabs:
   - {fileID: 4021563759370964027, guid: 944d8bc017359cc408335ceb6c437815, type: 3}
   - {fileID: 3099726090990308002, guid: d6c935fb6052d7248802b42ecfd862f8, type: 3}
