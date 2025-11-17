@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8063478998313469069}
   - component: {fileID: 3830696509415115358}
   - component: {fileID: 4509676685687620987}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy_Trace
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &4509676685687620987
 Animator:
   serializedVersion: 7

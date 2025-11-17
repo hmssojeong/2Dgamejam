@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         // 쿨타임을 1과 2사이로 랜덤하게 지정한다.
-        float randomCoolTime = Random.Range(1f, 3f);
+        float randomCoolTime = Random.Range(1f, 5f);
         CoolTime = randomCoolTime;
     }
 

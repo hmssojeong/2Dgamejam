@@ -79,6 +79,7 @@ public class Enemy : MonoBehaviour
 
     private void MoveFly()
     {
+        float moveFlyX = Speed * Time.deltaTime * -1f;
 
         _currentPosition += Time.deltaTime * direction;
         if(_currentPosition >= TopMax)
@@ -92,7 +93,7 @@ public class Enemy : MonoBehaviour
             _currentPosition = BottomMax;
         }
 
-        transform.position = new Vector3(0, _currentPosition, 0);
+        transform.position = new Vector3(transform.position.x + moveFlyX, _currentPosition, 0);
     }
 
     private void DropItem()

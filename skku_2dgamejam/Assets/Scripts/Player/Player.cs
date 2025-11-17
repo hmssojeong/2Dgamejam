@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public GameObject AttackPrefab;
     public float AttackRange = 1f;
     public float AttackSpeed = 1f;
-    public float Damage = 10;
+    public float Damage = 20;
 
     private Animator _animator;
 

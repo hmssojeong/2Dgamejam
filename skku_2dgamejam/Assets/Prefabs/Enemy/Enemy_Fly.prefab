@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8479534110314914959}
   - component: {fileID: 6052261703707488111}
   - component: {fileID: -7537510219470148221}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy_Fly
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -207,4 +207,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

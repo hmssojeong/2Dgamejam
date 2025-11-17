@@ -519,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 1363377065}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.21, y: -2.85, z: 0}
+  m_LocalPosition: {x: 8.21, y: -2.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -534,40 +534,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2197142424667919455, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
-      propertyPath: pos
-      value: 
-      objectReference: {fileID: 8997130149147711774, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
-    - target: {fileID: 2197142424667919455, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
       propertyPath: boxSize.x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2197142424667919455, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
       propertyPath: boxSize.y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2197142424667919455, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
-      propertyPath: AttackPrefab
-      value: 
-      objectReference: {fileID: 4682448051379760249, guid: a8aeeda54694ad440968bb8ce2f57638, type: 3}
     - target: {fileID: 3299088782421338448, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7820550236872776251, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
-      propertyPath: m_Size.y
-      value: 1
+    - target: {fileID: 3299088782421338448, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6753518797286311970, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7820550236872776251, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
       propertyPath: m_Offset.y
       value: 0.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 7820550236872776251, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8397577449842157065, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8397577449842157065, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
       propertyPath: m_CollisionDetection
