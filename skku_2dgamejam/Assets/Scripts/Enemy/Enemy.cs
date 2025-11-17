@@ -136,7 +136,9 @@ public class Enemy : MonoBehaviour
 
         DropItem();
         MakeExplosionEffect();
-        Destroy(gameObject, 0.5f);
+        _animator.SetTrigger("Die");
+        Destroy(gameObject, 0.7f);
+        ScoreManager.Instance.AddScore(100);
 
     }
 
