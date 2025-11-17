@@ -53,8 +53,8 @@ public class ScoreManager : MonoBehaviour
         Refresh();
 
         UpdateBestScore();
-        BossSpawner.instance.CheckSpawnBoss(_currentScore);  // 보스 체크 추가
-
+        /*BossSpawner.instance.CheckSpawnBoss(_currentScore);  // 보스 체크 추가
+*/
         Save();
     }
 

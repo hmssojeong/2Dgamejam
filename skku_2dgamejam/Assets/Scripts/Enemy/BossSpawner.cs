@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BossSpawner : MonoBehaviour
+/*public class BossSpawner : MonoBehaviour
 {
     public static BossSpawner instance;
 
@@ -65,4 +65,4 @@ public class BossSpawner : MonoBehaviour
         }
 
     }
-}
+}*/

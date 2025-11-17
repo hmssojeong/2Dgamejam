@@ -39,10 +39,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public void StopSpawning()
+/*    public void StopSpawning()
     {
         CanSpawn = false;
-    }
+    }*/
 
 
     private GameObject SelectRamdomEnemy()
