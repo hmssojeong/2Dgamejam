@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [Header("스탯")]
     public float Speed = 1.0f;
     public float _health = 30f;
+    public float Damage = 5f;
 
     [Header("적 타입")]
     public EEnemyType Type;
@@ -94,36 +95,48 @@ public class Enemy : MonoBehaviour
         transform.position = new Vector3(0, _currentPosition, 0);
     }
 
-
-
-    public void Hit(float damage)
+    private void DropItem()
     {
-        _health -= damage;
+        if (Random.Range(0, 2) == 0) return;
+    }
+
+    private void MakeExplosionEffect()
+    {
+        Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 몬스터는 플레이어와만 충돌처리할 것이다.
+        if (!other.gameObject.CompareTag("Player")) return;
+
+        Player player = other.gameObject.GetComponent<Player>();
+        if (player == null) return;
+
+        player.Hit(Damage);
+
+    }
+
+    public void Hit(float Damage)
+    {
+        _health -= Damage;
 
         _animator.SetTrigger("Hit");
 
         if (_health <= 0 )
         {
             Death();
+
         }
     }
 
     private void Death()
     {
-       DropItem();
-    }
 
-     private void DropItem()
-    {
-        if(Random.Range(0,2) == 0)
-        {
-           
-        }
+        DropItem();
+        MakeExplosionEffect();
+        Destroy(gameObject, 0.5f);
 
-        else
-        {
-            
-        }
     }
 
 }

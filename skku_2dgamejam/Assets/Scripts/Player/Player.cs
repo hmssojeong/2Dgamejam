@@ -4,13 +4,15 @@ public class Player : MonoBehaviour
 {
     private PlayerManualMove _playerManualMove;
     public float Speed = 3f;
+    private float _health = 200;
 
-    public GameObject AttackPrefab; 
+    public GameObject AttackPrefab;
     public float AttackRange = 1f;
     public float AttackSpeed = 1f;
     public float Damage = 10;
 
     private Animator _animator;
+
 
     private float curTime;
     public float coolTime = 0.5f;
@@ -18,12 +20,17 @@ public class Player : MonoBehaviour
     public Transform pos;
     public Vector2 boxSize;
 
+
     private void Start()
     {
-        _animator = GetComponent<Animator>();   
+        _animator = GetComponent<Animator>();
+        
+
     }
     private void Update()
     {
+
+
         if (Input.GetMouseButtonDown(0) && curTime <= 0)
         {
             if (Input.GetMouseButtonDown(0))
@@ -32,12 +39,12 @@ public class Player : MonoBehaviour
 
                 foreach (Collider2D collider in collider2Ds)
                 {
-                    if(collider.tag == "Enemy")
+                    if (collider.tag == "Enemy")
                     {
                         collider.GetComponent<Enemy>().Hit(10);
                     }
                 }
-              
+
             }
             _animator.SetTrigger("Attack1");
             curTime = coolTime;
@@ -47,12 +54,25 @@ public class Player : MonoBehaviour
             curTime -= Time.deltaTime;
         }
     }
-
-    private void OnDrawGizmos()
+    public void Hit(float Damage)
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(pos.position, boxSize);
+        _health -= Damage;
+        if(_health <=0)
+        {
+            Destroy(gameObject);
+        }
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // 몬스터는 플레이어와만 충돌처리할 것이다.
+        if (!other.gameObject.CompareTag("Enemy")) return;
+
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+        if (enemy == null) return;
+
+        enemy.Hit(Damage);
+
+    }
 }
 

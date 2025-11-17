@@ -11,8 +11,8 @@ public class PlayerManualMove : MonoBehaviour
     private Vector2 _originPosition;
 
     [Header("이동범위")]
-    public float MinX = -8f;
-    public float MaxX = 8f;
+    public float MinX = -7f;
+    public float MaxX = 7.4f;
     public float MinY = -4;
     public float MaxY = 4;
 
@@ -23,7 +23,6 @@ public class PlayerManualMove : MonoBehaviour
     [SerializeField]
     private float _bounce = 5f; //점프 높이
     private Rigidbody2D _rigid2D;
-    private bool isdash;
 
     [SerializeField]
     private LayerMask groundLayer; // 바닥 체크를 위한 충돌 레이어
@@ -64,7 +63,6 @@ public class PlayerManualMove : MonoBehaviour
         float finalSpeed = _player.Speed;
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            isdash = true;
             _animator.SetBool("Run", true);
             finalSpeed = finalSpeed * ShiftSpeed;
         }
