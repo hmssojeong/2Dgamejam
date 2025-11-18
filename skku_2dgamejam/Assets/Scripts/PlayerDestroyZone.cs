@@ -8,6 +8,7 @@ public class PlayerDestroyZone : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             GameManager.instance.GameOver();
+            ShakeCamera.Instance.StopShake();
             return;
         }
     }

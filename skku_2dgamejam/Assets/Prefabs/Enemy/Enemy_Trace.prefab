@@ -221,11 +221,11 @@ MonoBehaviour:
   ItemPrefabs:
   - {fileID: 4021563759370964027, guid: 944d8bc017359cc408335ceb6c437815, type: 3}
   - {fileID: 3099726090990308002, guid: d6c935fb6052d7248802b42ecfd862f8, type: 3}
-  ExplosionPrefab: {fileID: 8194992990867289339, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
+  ExplosionPrefab: {fileID: 4425129568585013132, guid: bbeeb0ddc21369746aaaae5c5c1c09cf, type: 3}
   HitSound_Directional: {fileID: 0}
   HitSound_Trace: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
   HitSound_Fly: {fileID: 0}
-  DieSound_Trace: {fileID: 8300000, guid: 7c47b20bb9874304a809dc5580d403ba, type: 3}
+  DieSound_Trace: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
 --- !u!95 &4509676685687620987
 Animator:
   serializedVersion: 7

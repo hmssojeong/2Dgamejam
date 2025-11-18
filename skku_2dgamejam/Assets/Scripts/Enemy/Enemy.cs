@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     [Header("폭발 프리팹")]
     public GameObject ExplosionPrefab;
 
+
     [Header("사운드")]
     public AudioClip HitSound_Directional;
     public AudioClip HitSound_Trace;
@@ -119,6 +120,7 @@ public class Enemy : MonoBehaviour
     private void MakeExplosionEffect()
     {
         Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+  
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -147,11 +149,17 @@ public class Enemy : MonoBehaviour
 
         if (_health <= 0 )
         {
-            PlayDieSound();
-            Death();
-
+            PlayDieSound();    
+            StartCoroutine(Die(0.5f));
         }
     }
+
+    private IEnumerator Die(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Death();
+    }
+
     private void PlayHitSound()
     {
         if (_audio == null) return;
