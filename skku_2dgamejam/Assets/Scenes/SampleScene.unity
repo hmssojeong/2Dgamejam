@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: eb3222d24abb7904eafd2d9eb3c5640d, type: 2}
-  ScrollSpeed: 3
+  ScrollSpeed: 0.3
 --- !u!1 &955999359
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,7 +1532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: 63d09d03ef1441743bbd010adbabbff2, type: 2}
-  ScrollSpeed: 0.3
+  ScrollSpeed: 0.4
 --- !u!1 &1054749886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: fcc57e3d441576e468b586ed3a7674c4, type: 2}
-  ScrollSpeed: 4
+  ScrollSpeed: 0.2
 --- !u!1 &1363377065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,7 +2354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: 6049573373102e9478cf658639098ae6, type: 2}
-  ScrollSpeed: 0.2
+  ScrollSpeed: 0.1
 --- !u!1 &1471507372
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,7 +3012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: 1cf7128e269f49749a510521b981130e, type: 2}
-  ScrollSpeed: 0.5
+  ScrollSpeed: 0.3
 --- !u!1 &1998040402 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3299088782421338448, guid: 6722eaf399558014fa9d1b121a76018e, type: 3}
