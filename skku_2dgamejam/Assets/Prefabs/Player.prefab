@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4992448773695362939}
   - component: {fileID: 5638399194438332943}
   - component: {fileID: 2197142424667919455}
+  - component: {fileID: -568370672476407803}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -116,6 +117,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  JumpSound: {fileID: 0}
 --- !u!50 &8397577449842157065
 Rigidbody2D:
   serializedVersion: 5
@@ -234,6 +236,19 @@ MonoBehaviour:
   coolTime: 0.5
   pos: {fileID: 8997130149147711774}
   boxSize: {x: 5, y: 5}
+  AttackSound: {fileID: 0}
+--- !u!114 &-568370672476407803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299088782421338448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50c0f39e69ffdbd4d8c88816ab5b4369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6753518797286311970
 GameObject:
   m_ObjectHideFlags: 0

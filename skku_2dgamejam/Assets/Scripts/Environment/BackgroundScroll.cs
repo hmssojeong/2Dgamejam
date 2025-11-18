@@ -13,7 +13,7 @@ public class BackgroundScroll : MonoBehaviour
     private void Update()
     {
         // 방향을 구한다.
-        Vector2 direction = Vector2.left;
+        Vector2 direction = Vector2.right;
         // 움직인다.(스크롤한다.)
         BackgroundMaterial.mainTextureOffset += direction * ScrollSpeed * Time.deltaTime;
     }
