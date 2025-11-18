@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public List<int> EnemySpawnRate;
 
 
-    public float CoolTime = 3f;
+    public float CoolTime = 1f;
     private float _timer;
 
     public bool CanSpawn = true;
@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         // 쿨타임을 1과 2사이로 랜덤하게 지정한다.
-        float randomCoolTime = Random.Range(1f, 5f);
+        float randomCoolTime = Random.Range(1f, 1.5f);
         CoolTime = randomCoolTime;
     }
 

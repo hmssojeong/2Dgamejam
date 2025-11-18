@@ -213,7 +213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TopMax: 4
   BottomMax: 2
-  Speed: 2
+  Speed: 5
   _health: 200
   Damage: 5
   Type: 1
