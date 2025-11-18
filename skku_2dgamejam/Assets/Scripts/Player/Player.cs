@@ -1,3 +1,4 @@
+using Karugamo.Audio;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -5,7 +6,7 @@ public class Player : MonoBehaviour
    
     private PlayerManualMove _playerManualMove;
     public float Speed = 3f;
-    private float _health = 200;
+    private float _health = 100;
 
     public GameObject AttackPrefab;
     public float AttackRange = 1f;
@@ -24,9 +25,15 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriter;
     private Rigidbody2D rigid;
 
+    [Header("사운드")]
+    public AudioClip AttackSound;
+
+    private AudioSource _audio;
+
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
 
         spriter = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
@@ -50,6 +57,7 @@ public class Player : MonoBehaviour
                 }
 
             }
+            PlayAttackSound();
             _animator.SetTrigger("Attack1");
             curTime = coolTime;
         }
@@ -57,6 +65,7 @@ public class Player : MonoBehaviour
         {
             curTime -= Time.deltaTime;
         }
+        
     }
     public void Hit(float Damage)
     {
@@ -64,13 +73,31 @@ public class Player : MonoBehaviour
         if(_health <=0)
         {
             Destroy(gameObject);
+
             ScoreManager scoreManager = FindAnyObjectByType<ScoreManager>();
             scoreManager.BestScore();
         }
     }
 
+    private void PlayAttackSound()
+    {
+        if (_audio == null) return;
+        {
+            if (AttackSound != null)
+                _audio.PlayOneShot(AttackSound);
 
-        private void OnTriggerEnter2D(Collider2D other)
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.GameOver();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
         {
 
             // 몬스터는 플레이어와만 충돌처리할 것이다.
@@ -80,31 +107,6 @@ public class Player : MonoBehaviour
             if (enemy == null) return;
 
             enemy.Hit(Damage);
-             OnDamaged(transform.position);
         }
-
-        private void OnDamaged(Vector2 targetPos)
-        {
-            gameObject.layer = 6;
-            spriter.color = new Color(1, 0, 0, 0.4f);
-   
-
-        int direction = transform.position.x - targetPos.x > 0 ? 1 : -1;
-
-        Vector2 jumpVelocity = Vector2.up * 4f;
-        rigid.AddForce(jumpVelocity, ForceMode2D.Impulse);
-            //좌우로 튕김
-            rigid.AddForce(new Vector2(direction, 1)*5, ForceMode2D.Impulse);
-        
-            //3초뒤에 "OffDamaged"가 실행된다.
-            Invoke("OffDamaged", 3);
-         }
-    void OffDamaged()
-    {
-        //스프라이트의 색상과 투명도를 원래대로
-        spriter.color = new Color(1, 1, 1, 1);
-        //플레이어의 레이어를 원래대로
-        gameObject.layer = 9;
-    }
 }
 

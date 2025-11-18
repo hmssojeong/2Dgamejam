@@ -1,3 +1,4 @@
+using Karugamo.Audio;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -30,11 +31,18 @@ public class PlayerManualMove : MonoBehaviour
     private bool isGrounded; // 바닥 체크 (바닥에 닿아있을 때 true)
     private Vector3 footPosition; // 발의 위치
 
+    [Header("사운드")]
+    public AudioClip JumpSound;
+    /*public AudioClip HitSound_Trace;
+    public AudioClip HitSound_Fly;*/
+
+    private AudioSource _audio;
+
 
     private void Start()
     {
         _player = GetComponent<Player>();
-
+        _audio = GetComponent<AudioSource>();
         _originPosition = transform.position;
     }
 
@@ -83,7 +91,9 @@ public class PlayerManualMove : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            PlayJumpSound();
             Jump();
+            
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -99,6 +109,15 @@ public class PlayerManualMove : MonoBehaviour
 
     }
 
+    private void PlayJumpSound()
+    {
+        if (_audio == null) return;
+        { 
+                if (JumpSound != null)
+                    _audio.PlayOneShot(JumpSound);
+ 
+        }
+    }
     private void FixedUpdate()
     {
         Bounds bounds = capuleCollider2D.bounds; //플레이어 오브젝트의 위치정보

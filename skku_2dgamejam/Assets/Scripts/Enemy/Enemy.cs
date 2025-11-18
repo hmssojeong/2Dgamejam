@@ -18,9 +18,9 @@ public class Enemy : MonoBehaviour
     private float direction = 3.0f;
 
     [Header("스탯")]
-    public float Speed = 1.0f;
-    public float _health = 30f;
-    public float Damage = 5f;
+    public float Speed = 3.0f;
+    public float _health;
+    public float Damage = 10f;
 
     [Header("적 타입")]
     public EEnemyType Type;
@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
     public AudioClip HitSound_Directional;
     public AudioClip HitSound_Trace;
     public AudioClip HitSound_Fly;
+    public AudioClip DieSound_Trace;
 
     private AudioSource _audio;
 
@@ -146,6 +147,7 @@ public class Enemy : MonoBehaviour
 
         if (_health <= 0 )
         {
+            PlayDieSound();
             Death();
 
         }
@@ -169,6 +171,19 @@ public class Enemy : MonoBehaviour
             case EEnemyType.Fly:
                 if (HitSound_Fly != null)
                     _audio.PlayOneShot(HitSound_Fly);
+                break;
+        }
+    }
+
+    private void PlayDieSound()
+    {
+        if (_audio != null) return;
+        
+        switch (Type)
+        {
+            case EEnemyType.Trace:
+                if (DieSound_Trace != null)
+                    _audio.PlayOneShot(DieSound_Trace);
                 break;
         }
     }

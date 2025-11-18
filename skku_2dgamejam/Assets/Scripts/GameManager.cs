@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI TimeTxt;
     public GameObject EndTxt;
-
-
+    public GameObject Player;
     float time = 0.0f;
 
     private void Awake()
@@ -29,13 +28,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
-        TimeTxt.text = time.ToString("N2"); //소숫점 둘째자리까지
-        if (time > 29.99f)
-        {
-            Time.timeScale = 0.0f;
-            EndTxt.SetActive(true); // Text 형으로 안받고 GameObject형으로 받아서 생략가능
-        }
+
+            time += Time.deltaTime;
+            TimeTxt.text = time.ToString("N2"); //소숫점 둘째자리까지
+            if (time > 30.00f)
+            {
+                GameOver(); // Text 형으로 안받고 GameObject형으로 받아서 생략가능
+            }
     }
-    
+
+    public void GameOver()
+    {
+        Time.timeScale = 0.0f;  // 게임 멈춤
+        EndTxt.SetActive(true);  // 게임오버 텍스트 표시
+    }
+
 }
