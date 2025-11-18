@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 84b145a3b5b1785459cfb33fb42dfd28
+timeCreated: 1518699198
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 117893
+  packageName: Karugamo BGM FREE Pack
+  packageVersion: 1.0
+  assetPath: Assets/Karugamo/Scripts/Audio/Audio.cs
+  uploadId: 346841

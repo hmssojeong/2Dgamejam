@@ -1,6 +1,8 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public enum EEnemyType
 {
@@ -24,7 +26,7 @@ public class Enemy : MonoBehaviour
     public EEnemyType Type;
 
     [Header("점수")]
-    public int Score = 100;
+    public int Score;
 
     [Header("아이템 프리팹")]
     public GameObject[] ItemPrefabs;
@@ -35,10 +37,18 @@ public class Enemy : MonoBehaviour
     [Header("폭발 프리팹")]
     public GameObject ExplosionPrefab;
 
+    [Header("사운드")]
+    public AudioClip HitSound_Directional;
+    public AudioClip HitSound_Trace;
+    public AudioClip HitSound_Fly;
+
+    private AudioSource _audio;
+
     private void Start()
     {
         _enemy = GetComponent<Enemy>();
         _animator = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
 
         _currentPosition = transform.position.x;
     }
@@ -102,7 +112,7 @@ public class Enemy : MonoBehaviour
 
     private void DropItem()
     {
-        if (Random.Range(0, 2) == 0) return;
+        if ((UnityEngine.Random.Range(0, 2) == 0)) return;
     }
 
     private void MakeExplosionEffect()
@@ -116,22 +126,50 @@ public class Enemy : MonoBehaviour
         if (!other.gameObject.CompareTag("Player")) return;
 
         Player player = other.gameObject.GetComponent<Player>();
-        if (player == null) return;
-
+        if (player != null)
+        { 
         player.Hit(Damage);
-
+        }
     }
 
     public void Hit(float Damage)
     {
         _health -= Damage;
 
+        PlayHitSound();
+
         _animator.SetTrigger("Hit");
+        if (ShakeCamera.Instance != null)
+        {
+            ShakeCamera.Instance.OnShakeCamera(0.2f, 0.2f);
+        }
 
         if (_health <= 0 )
         {
             Death();
 
+        }
+    }
+    private void PlayHitSound()
+    {
+        if (_audio == null) return;
+
+        switch (Type)
+        {
+            case EEnemyType.Directional:
+                if (HitSound_Directional != null)
+                    _audio.PlayOneShot(HitSound_Directional);
+                break;
+
+            case EEnemyType.Trace:
+                if (HitSound_Trace != null)
+                    _audio.PlayOneShot(HitSound_Trace);
+                break;
+
+            case EEnemyType.Fly:
+                if (HitSound_Fly != null)
+                    _audio.PlayOneShot(HitSound_Fly);
+                break;
         }
     }
 
@@ -141,9 +179,9 @@ public class Enemy : MonoBehaviour
         DropItem();
         MakeExplosionEffect();
         _animator.SetTrigger("Die");
-        ScoreManager.Instance.AddScore(Score);
         Destroy(gameObject, 0.7f);
-        
+        ScoreManager.Instance.AddScore(Score);
+
 
     }
 

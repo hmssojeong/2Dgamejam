@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 289f2107acaa4304a8377bdf24b6f9df
+timeCreated: 1518698932
+licenseType: Store
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 117893
+  packageName: Karugamo BGM FREE Pack
+  packageVersion: 1.0
+  assetPath: Assets/Karugamo/Sample/Scenes/KarugamoAudioSample.unity
+  uploadId: 346841

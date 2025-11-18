@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerManualMove : MonoBehaviour
 {
-    public float ShiftSpeed = 1.2f;
-    public float Speed = 1f;
+    public float ShiftSpeed = 3f;
+    public float Speed = 2f;
     
     [Header("시작위치")]
     private Vector2 _originPosition;
@@ -76,15 +76,20 @@ public class PlayerManualMove : MonoBehaviour
             transform.Translate(Vector3.left * finalSpeed * Time.deltaTime);
         }
 
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.up * Speed * Time.deltaTime);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
 
-        /*  if (Input.GetKey(KeyCode.S)) --시간되면 앉기 버튼 구현하기
-            {
-               transform.Translate(Vector3.left * Speed * Time.deltaTime);
-             } */
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.down * Speed * Time.deltaTime);
+        } 
 
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");

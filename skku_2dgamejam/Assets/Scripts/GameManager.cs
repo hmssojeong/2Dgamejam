@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         time += Time.deltaTime;
         TimeTxt.text = time.ToString("N2"); //소숫점 둘째자리까지
-        if (time > 30.0f)
+        if (time > 29.99f)
         {
             Time.timeScale = 0.0f;
             EndTxt.SetActive(true); // Text 형으로 안받고 GameObject형으로 받아서 생략가능

@@ -74,12 +74,12 @@ public class ScoreManager : MonoBehaviour
 
     private void Refresh()
     {
-        _currentScoreTextUI.text = $"현재 점수: {_currentScore:N0}";
+        _currentScoreTextUI.text = $"Score: {_currentScore:N0}";
     }
 
     private void Refreshbest()
     {
-        _bestScoreTextUI.text = $"최고 점수: {_bestScore:N0}";
+        _bestScoreTextUI.text = $"BestScore: {_bestScore:N0}";
     }
 
     private void Save()
@@ -114,7 +114,7 @@ public class ScoreManager : MonoBehaviour
         if (_currentScore > _bestScore)
         {
             _bestScore = _currentScore;
-            _bestScoreTextUI.text = $"최고 점수: {_bestScore:N0}";
+            _bestScoreTextUI.text = $"BestScore: {_bestScore:N0}";
 
             // PlayerPrefs에 저장
             PlayerPrefs.SetInt(BestScoreKey, _bestScore);

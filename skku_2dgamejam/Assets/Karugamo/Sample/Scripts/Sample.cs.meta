@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 2c92f1efaac700d419325ac3d212d9e9
+timeCreated: 1524387621
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 117893
+  packageName: Karugamo BGM FREE Pack
+  packageVersion: 1.0
+  assetPath: Assets/Karugamo/Sample/Scripts/Sample.cs
+  uploadId: 346841

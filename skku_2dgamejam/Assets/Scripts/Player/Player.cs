@@ -21,12 +21,15 @@ public class Player : MonoBehaviour
     public Transform pos;
     public Vector2 boxSize;
 
+    private SpriteRenderer spriter;
+    private Rigidbody2D rigid;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        
 
+        spriter = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -42,7 +45,7 @@ public class Player : MonoBehaviour
                 {
                     if (collider.tag == "Enemy")
                     {
-                        collider.GetComponent<Enemy>().Hit(10);
+                        collider.GetComponent<Enemy>().Hit(50);
                     }
                 }
 
@@ -66,16 +69,42 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+
+            // 몬스터는 플레이어와만 충돌처리할 것이다.
+            if (!other.gameObject.CompareTag("Enemy")) return;
+
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            if (enemy == null) return;
+
+            enemy.Hit(Damage);
+             OnDamaged(transform.position);
+        }
+
+        private void OnDamaged(Vector2 targetPos)
+        {
+            gameObject.layer = 6;
+            spriter.color = new Color(1, 0, 0, 0.4f);
+   
+
+        int direction = transform.position.x - targetPos.x > 0 ? 1 : -1;
+
+        Vector2 jumpVelocity = Vector2.up * 4f;
+        rigid.AddForce(jumpVelocity, ForceMode2D.Impulse);
+            //좌우로 튕김
+            rigid.AddForce(new Vector2(direction, 1)*5, ForceMode2D.Impulse);
+        
+            //3초뒤에 "OffDamaged"가 실행된다.
+            Invoke("OffDamaged", 3);
+         }
+    void OffDamaged()
     {
-        // 몬스터는 플레이어와만 충돌처리할 것이다.
-        if (!other.gameObject.CompareTag("Enemy")) return;
-
-        Enemy enemy = other.gameObject.GetComponent<Enemy>();
-        if (enemy == null) return;
-
-        enemy.Hit(Damage);
-
+        //스프라이트의 색상과 투명도를 원래대로
+        spriter.color = new Color(1, 1, 1, 1);
+        //플레이어의 레이어를 원래대로
+        gameObject.layer = 9;
     }
 }
 
