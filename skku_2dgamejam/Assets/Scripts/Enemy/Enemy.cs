@@ -25,6 +25,12 @@ public class Enemy : MonoBehaviour
     [Header("적 타입")]
     public EEnemyType Type;
 
+    // 5초 추적 시간
+    private float traceDuration = 3f;
+    private float traceTimer = 0f;
+
+    private Rigidbody2D rb;
+
     [Header("점수")]
     public int Score;
 
@@ -51,6 +57,9 @@ public class Enemy : MonoBehaviour
         _enemy = GetComponent<Enemy>();
         _animator = GetComponent<Animator>();
         _audio = GetComponent<AudioSource>();
+
+        traceTimer = traceDuration;
+        rb = GetComponent<Rigidbody2D>();
 
         _currentPosition = transform.position.x;
     }
@@ -80,6 +89,14 @@ public class Enemy : MonoBehaviour
 
     private void MoveTrace()
     {
+        if (traceTimer <= 0f)
+        {
+            rb.linearVelocity = Vector2.left * Speed;
+            return;
+        }
+
+        traceTimer -= Time.deltaTime;
+
         // 1. 플레이어의 위치를 구한다.
         GameObject playerObject = GameObject.FindWithTag("Player");
         if (playerObject == null) return;
@@ -91,6 +108,7 @@ public class Enemy : MonoBehaviour
 
         // 3. 방향에 맞게 이동한다.
         transform.Translate(direction * Speed * Time.deltaTime);
+
     }
 
     private void MoveFly()

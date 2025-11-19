@@ -34,20 +34,20 @@ public class GameManager : MonoBehaviour
             TimeTxt.text = time.ToString("N0"); //소숫점 둘째자리까지
             if (time < 00f)
             {
+                
                 GameOver(); // Text 형으로 안받고 GameObject형으로 받아서 생략가능
                 ShakeCamera.Instance.StopShake();
-        }
+            }
     }
 
     public void GameOver()
     {
 
-            Time.timeScale = 0f;  // 게임 멈춤
+        Time.timeScale = 0f;  // 게임 멈춤
             ShakeCamera.Instance.StopShake();
             EndTxt.SetActive(true);  // 게임오버 텍스트 표시
             EndPannel.SetActive(true);
             Destroy(gameObject);
    
     }
-
 }

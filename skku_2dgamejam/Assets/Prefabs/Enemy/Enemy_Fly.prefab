@@ -116,10 +116,10 @@ MonoBehaviour:
   - {fileID: 4021563759370964027, guid: 944d8bc017359cc408335ceb6c437815, type: 3}
   - {fileID: 3099726090990308002, guid: d6c935fb6052d7248802b42ecfd862f8, type: 3}
   ExplosionPrefab: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
-  HitSound_Directional: {fileID: 0}
-  HitSound_Trace: {fileID: 0}
+  HitSound_Directional: {fileID: 8300000, guid: 0147661c12ea814488259f82d4a4aed8, type: 3}
+  HitSound_Trace: {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
   HitSound_Fly: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
-  DieSound_Trace: {fileID: 0}
+  DieSound_Trace: {fileID: 8300000, guid: 5c7b6d4002009e842bd2621585546d19, type: 3}
 --- !u!95 &8479534110314914959
 Animator:
   serializedVersion: 7
